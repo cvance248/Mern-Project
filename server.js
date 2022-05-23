@@ -58,6 +58,15 @@ app.post('/addPlayer', (request, response) => {
     ])
 })
 
+app.delete('/deleteItem', (request, response) => {
+    db.collection('posts').deleteOne({playerName: request.body.playerName})
+    .then(result => {
+        console.log('player deleted')
+        response.json('player deleted')
+    })
+    .catch(error => console.log(error))
+})
+
 app.get('/api/michigan', (request, response)=>{
     response.json(michigan)
 })

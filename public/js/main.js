@@ -1,15 +1,25 @@
-document.querySelector('button').addEventListener('click', getMichigan)
+const trashButton = document.querySelectorAll('.fa-trash')
 
-async function getMichigan () {
+Array.from(trashButton).forEach((element)=>{
+    element.addEventListener('click', deleteItem)
+})
+
+async function deleteItem () {
+    const playerName = this.parentNode.childNodes[1].innerText
+    const sportName = this.parentNode.childNodes[3].innerText
+    const schoolName = this.parentNode.childNodes[5].innerText
     try{
-        const res = await fetch('http://localhost:8000/api/michigan')
-        const data = await res.json()
-
+        const response = await fetch('deleteItem', {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'playerName': playerName,
+                'sportName': sportName,
+                'schoolName': schoolName
+            })
+        })
+        const data = await response.json()
         console.log(data)
-        document.querySelector('#sport').textContent = data.sport
-    }
-
-    catch(err){
-        console.log(err)
-    }
+        location.reload()
+    }catch(err){console.log(err)}
 }
