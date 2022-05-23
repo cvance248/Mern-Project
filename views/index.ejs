@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Database Practice App</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add your favorite college athlete</h1>
+    <p>Enter their name, sport and school to let everyone know</p>
+    <form action="/addPlayer" method="post">
+        <input type="text" placeholder="Player Name" name="playerName" required>
+        <input type="text" placeholder="Sport Name" name="sportName" required>
+        <input type="text" placeholder="School Name" name="schoolName" required>
+        <input type="submit">
+    </form>
+
+    <h3>List of Players</h3>
+    <ul class="players">
+        <% for(let i=0; i < info.length; i++) {%>
+            <li class="player">
+                <span><%= info[i].playerName %></span>
+                <span><%= info[i].sportName %></span>
+                <span><%= info[i].schoolName %></span>
+                <span class="fa fa-thumbs-up"></span>
+                <span class="fa fa-trash"></span>
+            </li>
+
+       <% } %>
+    </ul>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>
